@@ -13,6 +13,9 @@ use Illuminate\Foundation\Inspiring;
 |
 */
 
+/*
+ * Sample route included with Laravel
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+*/
