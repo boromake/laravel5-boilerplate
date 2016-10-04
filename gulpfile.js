@@ -1,5 +1,6 @@
 const elixir = require('laravel-elixir');
 
+require('./elixir-extensions');
 require('laravel-elixir-vue-2');
 
 /*
@@ -13,7 +14,26 @@ require('laravel-elixir-vue-2');
  |
  */
 
+// Turn off sourcemap files
+// elixir.config.sourcemaps = false;
+
+/*
+ |--------------------------------------------------------------------------
+ | Create/Refresh the .env file
+ |--------------------------------------------------------------------------
+ |
+ | ONLY RUN IN DEV
+ | Create/refresh the .env file by copying .env.local -> .env
+ |
+ */
+
+
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+
+	if(!elixir.config.production) {
+		mix.env();
+	}
+
+	mix.sass('app.scss')
+	   .webpack('app.js');
 });
