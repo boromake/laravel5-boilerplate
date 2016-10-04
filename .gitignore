@@ -1,7 +1,18 @@
-/node_modules
-/public/storage
-/vendor
-/.idea
-Homestead.json
-Homestead.yaml
+# Environment file
 .env
+
+# Files pulled in through dependency/package managers (Composer, NPM, etc)
+/vendor
+/node_modules
+/bower_components
+
+# User-specific configuration files
+Homestead.yaml
+Homestead.json
+.idea/
+
+# Compiled/build files
+/public/storage
+/public/build
+/public/js
+/public/css #only reason we would want this in source control is so that we can see changes made from SASS files
