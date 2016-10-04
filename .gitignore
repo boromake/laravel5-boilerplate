@@ -15,4 +15,4 @@ Homestead.json
 /public/storage
 /public/build
 /public/js
-/public/css #only reason we would want this in source control is so that we can see changes made from SASS files
+/public/css
