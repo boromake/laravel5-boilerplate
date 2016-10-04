@@ -17,19 +17,17 @@ require('laravel-elixir-vue-2');
 // Turn off sourcemap files
 // elixir.config.sourcemaps = false;
 
-/*
- |--------------------------------------------------------------------------
- | Create/Refresh the .env file
- |--------------------------------------------------------------------------
- |
- | ONLY RUN IN DEV
- | Create/refresh the .env file by copying .env.local -> .env
- |
- */
-
-
 elixir(mix => {
 
+	/*
+	 |--------------------------------------------------------------------------
+	 | Create/Refresh the .env file
+	 |--------------------------------------------------------------------------
+	 |
+	 | ONLY RUN IN DEV
+	 | Create/refresh the .env file by copying .env.local -> .env
+	 |
+	 */
 	if(!elixir.config.production) {
 		mix.env();
 	}
