@@ -1,6 +1,6 @@
 <?php
 
-return [
+$app_config = [
 
     /*
     |--------------------------------------------------------------------------
@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Laravel 5 Boilerplate',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,6 +140,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+	    Barryvdh\Debugbar\ServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -203,6 +204,7 @@ return [
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DB' => Illuminate\Support\Facades\DB::class,
+	    'Debugbar'  => Barryvdh\Debugbar\Facade::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
@@ -227,5 +229,17 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
 ];
+
+// Debugbar is only going to be available on dev, therefore we need to remove it
+// from all other environments
+if(env('APP_ENV', 'production') != 'local')
+{
+	$key = array_search('Barryvdh\Debugbar\ServiceProvider', $app_config['providers']);
+	if ($key !== false) {
+		unset($app_config['providers'][$key]);
+	}
+	unset($app_config['aliases']['Debugbar']);
+}
+
+return $app_config;
