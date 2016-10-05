@@ -50,5 +50,5 @@
 
 @push('before-closing-body')
 	{{-- SweetAlert module --}}
-	{{--@include('sweet::alert')--}}
+	@include('sweet::alert')
 @endpush
