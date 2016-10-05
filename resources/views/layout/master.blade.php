@@ -8,11 +8,14 @@
 	<title>@yield('title')</title>
 
 	{{-- stylesheets --}}
+	<link rel="stylesheet" href="{{ elixir('css/compiled/vendors/foundation.css') }}">
+	<link rel="stylesheet" href="{{ asset('/build/css/vendor/font-awesome.min.css') }}">
 	<link rel="stylesheet" href="{{ elixir('css/compiled/global.css') }}">
 	@stack('css') {{-- placeholder to allow for more css files to be added by child views --}}
 
 	{{-- javascript --}}
 	<script src="{{asset('/build/js/vendor/jquery.min.js')}}"></script>
+	<script src="{{elixir('js/mashed/global.js')}}"></script>
 	@stack('scripts') {{-- placeholder to allow for more css files to be added by child views --}}
 
 	{{-- meta tags --}}
@@ -37,6 +40,12 @@
 	@yield('body')
 
 	@stack('before-closing-body')
+
+	{{-- Foundation 6 JS plugin --}}
+	<script src="{{asset('/build/js/vendor/foundation.min.js')}}"></script>
+	<script type="text/javascript">
+		$(document).foundation();
+	</script>
 
 	{{-- Google Analytics --}}
 	@include('_partials.google_analytics')

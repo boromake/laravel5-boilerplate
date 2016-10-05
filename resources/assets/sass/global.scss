@@ -1,9 +1,7 @@
+// global.css
 
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// This file will get compiled to global.css
 
-// Variables
-@import "variables";
-
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// bootstrap all the required stuff
+// (Foundation custom variables, local variables, local mixins, etc)
+@import '_base-sass.scss';

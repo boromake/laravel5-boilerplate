@@ -15,16 +15,27 @@
 
 
 @section('nav')
-	<nav>
-		Nav placeholder
-	</nav>
+	<div class="row column">
+		<nav>
+			<ul class="menu">
+				<li><a href="#">One</a></li>
+				<li><a href="#">Two</a></li>
+				<li><a href="#">Three</a></li>
+				<li><a href="#">Four</a></li>
+			</ul>
+		</nav>
+	</div>
 @endsection
 
 
 @section('footer')
-	<footer>
-		Footer placeholder
-	</footer>
+	<div class="row column">
+		<footer>
+			<div class="callout">
+				Footer placeholder
+			</div>
+		</footer>
+	</div>
 @endsection
 
 

@@ -1,0 +1,14 @@
+/*
+ * _base-sass.scss
+ */
+// This file should be @import'ed into any .scss file that will get compiled to css
+// It includes variables, mixins, etc that partials can use
+
+// Import Foundation 6 variables so they can be referenced from any .scss file
+@import 'vendors/foundation/foundation_customization';
+
+// Import variables local to this project
+@import 'helpers/_variables.scss';
+
+// Import mixins local to this project
+@import 'helpers/_mixins.scss';

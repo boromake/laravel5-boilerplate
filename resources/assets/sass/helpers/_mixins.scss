@@ -1,0 +1,40 @@
+/*
+ * helpers/_mixing.scss
+ */
+
+// underline a non-statically displayed element
+// use with :after
+@mixin underline($color) {
+	&:after {
+		background: $color;
+		bottom: -5px;
+		content: "";
+		height: 2px;
+		left: 0;
+		margin: 0;
+		position: absolute;
+		width: 100%;
+	}
+}
+
+// create an inline list, with the separator of your choice
+@mixin inline-list($separator) {
+	overflow: hidden;
+	list-style-position: inside;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: inline-block;
+	}
+
+	li:before {
+		content: $separator ;
+		padding: 0 0.5em 0 0.3em; //these padding settings seem to center the $separator
+	}
+
+	li:first-child:before {
+		content: " ";
+		padding: 0;
+	}
+}

@@ -1,0 +1,28 @@
+/*
+ * foundation-sites-bootstrap.scss
+ */
+
+// BOOTSTRAP
+// This file will bootstrap Foundation, pulling in all the necessary source files and applying
+// our customizations to the default variable values.
+//
+// Explanation of setup:
+// http://stackoverflow.com/questions/30964780/foundation-with-laravel-and-elixir
+//
+// Other resources:
+// http://foundation.zurb.com/sites/docs/sass.html
+
+
+// customize Foundation 6 settings/variables (this has to be imported BEFORE foundation)
+// http://foundation.zurb.com/sites/docs/sass.html#compiling-manually
+// import from /resources/assets/sass/vendors-extensions/_foundation-customization.scss
+@import 'foundation_customization';
+
+// import Foundation source from /bower_components/foundation-sites/scss/foundation.scss
+@import 'foundation';
+
+// import Motion UI from /bower_components/motion-ui/src/motion-ui.scss
+@import 'motion-ui';
+
+// use the entire Foundation framework. see StackOverflow link to only include specific components
+@include foundation-everything;

@@ -18,6 +18,17 @@
 @section('body')
 
 	{{--
+	 HEADER
+	 --}}
+	<div class="row column">
+		<div class="callout">
+			<header>
+				<h1>Laravel 5 Boilerplate</h1>
+			</header>
+		</div>
+	</div>
+
+	{{--
 	 NAVIGATION BAR
 	 --}}
 	@yield('nav')
