@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', ['as' => 'homepage', function () {
-	\Alert::success('Sweet Alert is set up!', 'Success!')->persistent("Close");
+	Alert::success('Sweet Alert is set up!', 'Success!')->persistent("Close");
+
 	return view('homepage');
 }]);

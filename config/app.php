@@ -118,11 +118,16 @@ $app_config = [
 	|
 	| Available Settings: "single", "daily", "syslog", "errorlog"
 	|
+	| NOTE - This setting is now overridden in:
+	| /bootstrap/app.php (see configureMonologUsing())
 	*/
 
-	'log' => env('APP_LOG', 'single'),
-
+	'log' => env('APP_LOG', 'daily'), //This setting is no longer respected/used. See comments.
 	'log_level' => env('APP_LOG_LEVEL', 'debug'),
+	'log_max_files' => 5,
+	'enable_file_logging' => env('ENABLE_FILE_LOGGING', 0),
+	'enable_database_logging' => env('ENABLE_DATABASE_LOGGING', 0),
+	'enable_email_logging' => env('ENABLE_EMAIL_LOGGING', 0),
 
 	/*
 	|--------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layout.page')
 
 @section('title', '503 - Service Unavailable')
 
