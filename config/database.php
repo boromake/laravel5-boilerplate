@@ -46,18 +46,21 @@ return [
 
 	'connections' => [
 
+		/*
 		'sqlite' => [
 			'driver' => 'sqlite',
 			'database' => env('DB_DATABASE', database_path('database.sqlite')),
 			'prefix' => '',
 		],
-
+		*/
+		// used by the web application
+		// should only have minimal privileges for basic CRUD operations
 		'mysql' => [
 			'driver' => 'mysql',
 			'host' => env('DB_HOST', 'localhost'),
 			'port' => env('DB_PORT', '3306'),
-			'database' => env('DB_DATABASE', 'forge'),
-			'username' => env('DB_USERNAME', 'forge'),
+			'database' => env('DB_DATABASE'),
+			'username' => env('DB_USERNAME'),
 			'password' => env('DB_PASSWORD', ''),
 			'charset' => 'utf8',
 			'collation' => 'utf8_unicode_ci',
@@ -66,6 +69,21 @@ return [
 			'engine' => null,
 		],
 
+		// used to run 'Migrations' on dev environment to modify database schema
+		'mysql_admin' => [
+			'driver'    => 'mysql',
+			'host'      => env('DB_HOST', 'localhost'),
+			'port'      => env('DB_PORT', '3306'),
+			'database'  => env('DB_DATABASE', ''),
+			'username'  => env('DB_ADMIN_USERNAME', ''),
+			'password'  => env('DB_ADMIN_PASSWORD', ''),
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+			'strict'    => true,
+			'engine' => null,
+		],
+		/*
 		'pgsql' => [
 			'driver' => 'pgsql',
 			'host' => env('DB_HOST', 'localhost'),
@@ -78,7 +96,7 @@ return [
 			'schema' => 'public',
 			'sslmode' => 'prefer',
 		],
-
+		*/
 	],
 
 	/*
