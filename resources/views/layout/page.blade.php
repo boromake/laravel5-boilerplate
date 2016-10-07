@@ -21,7 +21,7 @@
 	 HEADER
 	 --}}
 	<div class="row column">
-		<div class="callout">
+		<div class="callout text-center">
 			<header>
 				<h1>Laravel 5 Boilerplate</h1>
 			</header>

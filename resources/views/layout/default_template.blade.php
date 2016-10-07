@@ -18,10 +18,15 @@
 	<div class="row column">
 		<nav>
 			<ul class="menu">
-				<li><a href="#">One</a></li>
-				<li><a href="#">Two</a></li>
-				<li><a href="#">Three</a></li>
-				<li><a href="#">Four</a></li>
+				@if(auth()->check())
+					<li>
+						Welcome, @icon(user) <strong>{{auth()->user()->email}}</strong>!
+						<a href="{{route('account::logout')}}">@icon(sign-out) Log-Out</a>
+					</li>
+				@else
+					<li><a href="{{route('account::register')}}">Register</a></li>
+					<li><a href="{{route('account::login')}}">@icon(sign-in) Log-In</a></li>
+				@endif
 			</ul>
 		</nav>
 	</div>
@@ -31,7 +36,7 @@
 @section('footer')
 	<div class="row column">
 		<footer>
-			<div class="callout">
+			<div class="callout text-center">
 				Footer placeholder
 			</div>
 		</footer>

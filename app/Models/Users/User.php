@@ -19,6 +19,9 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 {
 	use Notifiable, SoftDeletes, Authenticatable, Authorizable, CanResetPassword, UuidModel;
 
+	const ACCOUNT_TYPE_ADMIN = 1;
+	const ACCOUNT_TYPE_REGISTERED = 2;
+
 	protected $fillable = [
 		'email',
 		'account_type',
@@ -32,8 +35,8 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 	];
 
 	protected $rules = [
-		'email' => 'required|email|unique:users',
-		'password' => 'required',
+		'email' => 'required|max:255|email|unique:users',
+		'password' => 'required|min:8|max:255',
 	];
 
 	protected $validationMessages = [
@@ -46,4 +49,31 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 
 		parent::__construct($attributes);
 	}
+
+
+	#region Accessors / Mutators
+
+	/**
+	 * Mutator for 'password' field
+	 *
+	 * @param  string  $value
+	 * @return string
+	 */
+	public function setPasswordAttribute($value)
+	{
+		$this->attributes['password'] = Hash::make($value);
+	}
+
+	#endregion
+
+
+
+	#region Relationships
+
+	public function login_history()
+	{
+		return $this->hasMany('App\Models\Users\LoginHistory', 'user_id', 'uuid');
+	}
+
+	#endregion
 }
