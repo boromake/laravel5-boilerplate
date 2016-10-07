@@ -4,6 +4,7 @@
 
 @section('content')
 
+<div class="row column">
 	<h1>500 - Server Error</h1>
 
 	<div class="callout alert">
@@ -11,6 +12,7 @@
 		Whoops! Something went wrong and we are looking into it.
 		</p>
 	</div>
+</div>
 
 @endsection
 

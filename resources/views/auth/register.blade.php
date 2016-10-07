@@ -14,7 +14,7 @@
 
 	<div class="row">
 		<div class="columns small-12 large-4 end">
-			{{Form::label('email', 'E-Mail Address')}}
+			{{Form::label('email', 'E-Mail')}}
 			{{Form::text('email')}}
 		</div>
 	</div>

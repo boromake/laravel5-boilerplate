@@ -31,19 +31,28 @@ Route::get('/', ['as' => 'homepage', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::group(['as' => 'account::', 'prefix' => 'account', 'namespace' => 'Auth', 'middleware' => 'web'], function ()
-{
-	// Authentication Routes
+Route::group(['as' => 'account::', 'prefix' => 'account', 'namespace' => 'Auth', 'middleware' => 'web'], function () {
+	// Log-in / Log-out
 	Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
 	Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
 	Route::get('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
 
-	// Registration Routes
+	// Registration
 	Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
 	Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
+});
 
-	// Password Reset Routes
-	Route::get('password/reset/{token?}', ['as' => 'reset_password', 'uses' => 'PasswordController@showResetForm']);
-	Route::post('password/email', ['as' => 'password_email.post', 'uses' => 'PasswordController@sendResetLinkEmail']);
-	Route::post('password/reset', ['as' => 'reset_password.post', 'uses' => 'PasswordController@reset']);
+/*
+|--------------------------------------------------------------------------
+| "Password" Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['as' => 'password::', 'prefix' => 'password', 'namespace' => 'Auth', 'middleware' => 'web'], function () {
+	// Forgot password
+	Route::get('forgot', ['as' => 'forgot', 'uses' => 'ForgotPasswordController@showLinkRequestForm']);
+	Route::post('forgot', ['as' => 'forgot.post', 'uses' => 'ForgotPasswordController@sendResetLinkEmail']);
+
+	// Reset password
+	Route::get('reset/{token}', ['as' => 'reset', 'uses' => 'ResetPasswordController@showResetForm']);
+	Route::post('reset', ['as' => 'reset.post', 'uses' => 'ResetPasswordController@reset']);
 });
