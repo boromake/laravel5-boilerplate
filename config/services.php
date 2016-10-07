@@ -18,7 +18,7 @@ return [
 		'domain' => env('MAILGUN_DOMAIN'),
 		'secret' => env('MAILGUN_SECRET'),
 	],
-
+	/*
 	'ses' => [
 		'key' => env('SES_KEY'),
 		'secret' => env('SES_SECRET'),
@@ -30,11 +30,11 @@ return [
 	],
 
 	'stripe' => [
-		'model' => App\User::class,
+		'model' => App\Models\Users\User::class,
 		'key' => env('STRIPE_KEY'),
 		'secret' => env('STRIPE_SECRET'),
 	],
-
+	*/
 	'google_analytics' => [
 		'key' => env('GOOGLE_ANALYTICS_KEY', 'UA-XXXXXXX-X'),
 	],

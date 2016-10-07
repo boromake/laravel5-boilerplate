@@ -25,7 +25,7 @@ class CreateLoggingTables extends Migration
 			$table->string('level_name', 50);
 			$table->integer('level');
 			$table->integer('status_code')->nullable();
-			$table->string('message', 255);
+			$table->text('message');
 			$table->dateTime('timestamp');
 			$table->uuid('user_id')->nullable();
 			$table->string('user_email', 100)->nullable();
