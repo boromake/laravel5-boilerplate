@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+use App\Enums\UserAccountTypes;
 use App\Models\BaseModel;
 use App\Traits\UuidModel;
 use Ramsey\Uuid\Uuid;
@@ -18,9 +19,6 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 class User extends BaseModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
 	use Notifiable, SoftDeletes, Authenticatable, Authorizable, CanResetPassword, UuidModel;
-
-	const ACCOUNT_TYPE_ADMIN = 1;
-	const ACCOUNT_TYPE_REGISTERED = 2;
 
 	protected $fillable = [
 		'email',
@@ -49,6 +47,52 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 
 		parent::__construct($attributes);
 	}
+
+
+	#region Public methods
+
+	/*
+	 * True if the user is an admin
+	 *
+	 * @return boolean
+	 */
+	public function is_admin()
+	{
+		return $this->account_type == UserAccountTypes::OWNER || $this->account_type == UserAccountTypes::ADMIN;
+	}
+
+	/*
+	 * True if the user is an "internal" user (defined as admin/moderator)
+	 *
+	 * @return boolean
+	 */
+	public function is_internal_user()
+	{
+		return $this->is_admin() || $this->account_type == UserAccountTypes::MODERATOR;
+	}
+
+	/*
+	 * Determine if a user has access to a certain section of the site.
+	 * We are incorrectly mixing website "section" with account type
+	 *
+	 * @param \App\Enums\UserAccountTypes $type
+	 * @return boolean
+	 */
+	public function has_access($type)
+	{
+		switch($type)
+		{
+			case UserAccountTypes::ADMIN:
+				return $this->is_admin();
+				break;
+
+			default:
+				return false;
+				break;
+		}
+	}
+
+	#endregion
 
 
 	#region Accessors / Mutators

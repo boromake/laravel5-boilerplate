@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Users\User;
+use App\Enums\UserAccountTypes;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -63,7 +64,7 @@ class RegisterController extends Controller
 	protected function create(array $data)
 	{
 		return User::create(array_merge($data, [
-			'account_type' => User::ACCOUNT_TYPE_REGISTERED,
+			'account_type' => UserAccountTypes::REGISTERED,
 		]));
 	}
 }

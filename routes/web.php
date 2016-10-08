@@ -1,5 +1,7 @@
 <?php
 
+use \App\Enums\UserAccountTypes;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +15,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| "Public" Routes
+| Public routes
 |--------------------------------------------------------------------------
 */
 
@@ -27,7 +29,7 @@ Route::get('/', ['as' => 'homepage', function () {
 
 /*
 |--------------------------------------------------------------------------
-| "Account" Routes
+| Account routes
 |--------------------------------------------------------------------------
 */
 
@@ -42,9 +44,10 @@ Route::group(['as' => 'account::', 'prefix' => 'account', 'namespace' => 'Auth',
 	Route::post('register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
 });
 
+
 /*
 |--------------------------------------------------------------------------
-| "Password" Routes
+| Password routes
 |--------------------------------------------------------------------------
 */
 Route::group(['as' => 'password::', 'prefix' => 'password', 'namespace' => 'Auth', 'middleware' => 'web'], function () {
@@ -55,4 +58,17 @@ Route::group(['as' => 'password::', 'prefix' => 'password', 'namespace' => 'Auth
 	// Reset password
 	Route::get('reset/{token}', ['as' => 'reset', 'uses' => 'ResetPasswordController@showResetForm']);
 	Route::post('reset', ['as' => 'reset.post', 'uses' => 'ResetPasswordController@reset']);
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['as' => 'admin::', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web', 'auth', 'role:'.UserAccountTypes::ADMIN]], function ()
+{
+	Route::get('/', ['as' => 'landing', function () {
+		return view('admin.landing');
+	}]);
 });
