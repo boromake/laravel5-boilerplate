@@ -16,6 +16,14 @@
 			<li><a href="{{route('admin::users::login_history')}}">User Login History</a></li>
 		</ul>
 	</div>
+
+	<div class="columns small-12 large-4">
+		<h5>Logs</h5>
+		<ul>
+			<li><a href="{{route('admin::logs::general')}}">Error Logs</a></li>
+			<li><a href="">Email Logs</a></li>
+		</ul>
+	</div>
 </div>
 
 

@@ -21,7 +21,7 @@ use \App\Enums\UserAccountTypes;
 
 Route::get('/', ['as' => 'homepage', function () {
 	Alert::success('Sweet Alert is set up!', 'Success!')->persistent("Close");
-
+\Log::debug('homepage visited!');
 	return view('homepage');
 }]);
 
@@ -75,5 +75,9 @@ Route::group(['as' => 'admin::', 'prefix' => 'admin', 'namespace' => 'Admin', 'm
 
 	// User Info / Management
 	Route::get('/users/', ['as' => 'users', 'uses' => 'UserManagementController@showUsers']);
-	Route::get('/users/login-history/', ['as' => 'users::login_history', 'uses' => 'UserManagementController@showLoginHistory']);
+	Route::get('/users/login-history/{id?}', ['as' => 'users::login_history', 'uses' => 'UserManagementController@showLoginHistory'])->where('id', '[0-9]+');
+
+	// General logs
+	Route::get('/logs/general/', ['as' => 'logs::general', 'uses' => 'LogsController@showGeneralLogs']);
+	Route::get('/logs/general/{id}/', ['as' => 'logs::general_detail', 'uses' => 'LogsController@showGeneralLogDetails'])->where('id', '[0-9]+');
 });

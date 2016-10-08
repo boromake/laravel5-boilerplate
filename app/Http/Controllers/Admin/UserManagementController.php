@@ -71,11 +71,11 @@ class UserManagementController extends Controller
 	/**
 	 * Show login history of all users
 	 *
-	 * GET /admin/users/login-history/{id}
+	 * GET /admin/users/login-history/{id?}
 	 *
-	 * @param int id Optional querystring parameter for a user's id field
+	 * @param int $id (optional)
 	 */
-	public function showLoginHistory(Request $request)
+	public function showLoginHistory(Request $request, $id = null)
 	{
 		// the user we are specifically filtering by, if applicable
 		$filtered_user = null;
@@ -83,9 +83,9 @@ class UserManagementController extends Controller
 		$query_builder = LoginHistory::with('user');
 
 		// filter by specific user, if applicable
-		if($request->has('id'))
+		if(!is_null($id))
 		{
-			$filtered_user = User::findOrFail($request->get('id'));
+			$filtered_user = User::findOrFail($id);
 			$query_builder->where('user_id', $filtered_user->uuid);
 		}
 

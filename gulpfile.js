@@ -55,6 +55,10 @@ elixir(mix => {
 
 	mix.copy('resources/assets/css/vendors/font-awesome.min.css', 'public/build/css/vendor/font-awesome.min.css');
 
+	// https://github.com/yesmeck/jquery-jsonview
+	mix.copy('resources/assets/js/vendors/jquery.jsonview.min.js', 'public/build/js/vendors/jquery.jsonview.min.js');
+	mix.copy('resources/assets/css/vendors/jquery.jsonview.min.css', 'public/build/css/vendors/jquery.jsonview.min.css');
+
 	/*
 	 |--------------------------------------------------------------------------
 	 | Compile/mash SASS files into CSS files
