@@ -50,29 +50,6 @@ class CreateLoggingTables extends Migration
 			$table->index('user_id');
 			$table->index('status_code');
 		});
-
-
-		/********************************************
-		 * LOGS_EVENTS
-		 * Log "general" events
-		 ********************************************/
-		Schema::connection('mysql_admin')->create('logs_events', function (Blueprint $table)
-		{
-			$table->increments('id');
-
-			$table->uuid('user_id')->nullable();
-			$table->tinyInteger('event_id', false, true);
-			$table->string('description', 150)->nullable();
-			$table->json('extra_info')->nullable();
-
-			$table->timestamps();
-
-			$table->index('created_at');
-
-			$table->foreign('user_id')
-				->references('uuid')->on('users')
-				->onUpdate('cascade');
-		});
 	}
 
 	/**
@@ -82,7 +59,6 @@ class CreateLoggingTables extends Migration
 	 */
 	public function down()
 	{
-		Schema::connection('mysql_admin')->dropIfExists('logs_events');
 		Schema::connection('mysql_admin')->dropIfExists('logs_logging');
 	}
 }
