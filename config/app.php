@@ -92,6 +92,32 @@ $app_config = [
 
 	'fallback_locale' => 'en',
 
+		/*
+	|--------------------------------------------------------------------------
+	| Date output format
+	|--------------------------------------------------------------------------
+	| Here you can specify the default date format that the application
+	| will use to display dates
+	|
+	| n/j/Y -> m/d/yyyy
+	| m/d/Y -> mm/dd/yyyy
+	|
+	*/
+	'date_format' => 'n/j/Y',
+	'time_format' => 'g:i a',
+	'datetime_format' => 'n/j/Y g:i a', // g:i a might be specific to Carbon
+
+	/*
+	|--------------------------------------------------------------------------
+	| The DateTime format that the database is in
+	|--------------------------------------------------------------------------
+	| DateTime will have to be formatted like this in order to be properly
+	| saved into the database
+	|
+	*/
+	'date_format_database' => 'Y-m-d',
+	'datetime_format_database' => 'Y-m-d H:i:s',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Encryption Key

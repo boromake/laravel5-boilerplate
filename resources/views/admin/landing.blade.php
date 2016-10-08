@@ -12,8 +12,8 @@
 	<div class="columns small-12 large-4">
 		<h5>Users</h5>
 		<ul>
-			<li><a href="">View Users</a></li>
-			<li><a href="">User Login History</a></li>
+			<li><a href="{{route('admin::users')}}">View Users</a></li>
+			<li><a href="{{route('admin::users::login_history')}}">User Login History</a></li>
 		</ul>
 	</div>
 </div>

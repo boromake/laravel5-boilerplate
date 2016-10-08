@@ -20,7 +20,7 @@ class UserAccountTypes implements EnumContract
 		self::ADMIN                => 'Admin',
 		self::MODERATOR            => 'Moderator',
 		self::PAID                 => 'Paid Member',
-		self::REGISTERED           => 'Member',
+		self::REGISTERED           => 'Registered',
 	);
 
 	/**

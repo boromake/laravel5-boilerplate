@@ -108,6 +108,21 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 		$this->attributes['password'] = Hash::make($value);
 	}
 
+	/**
+	 * Get the date of the most recent login by this user
+	 *
+	 * This is a transient property that does not map to a database field.
+	 * Primarily used for sorting, that's why result is formatted as 'Y/n/j'
+	 *
+	 * @return null|\Carbon\Carbon
+	 */
+	public function getLastLoginAttribute()
+	{
+		$most_recent_login = empty($this->login_history) ? '' : $this->login_history->sortByDesc('created_at')->first();
+
+		return empty($most_recent_login) ? null : $most_recent_login->created_at;
+	}
+
 	#endregion
 
 

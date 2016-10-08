@@ -68,7 +68,12 @@ Route::group(['as' => 'password::', 'prefix' => 'password', 'namespace' => 'Auth
 */
 Route::group(['as' => 'admin::', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web', 'auth', 'role:'.UserAccountTypes::ADMIN]], function ()
 {
+	// Admin landing page
 	Route::get('/', ['as' => 'landing', function () {
 		return view('admin.landing');
 	}]);
+
+	// User Info / Management
+	Route::get('/users/', ['as' => 'users', 'uses' => 'UserManagementController@showUsers']);
+	Route::get('/users/login-history/', ['as' => 'users::login_history', 'uses' => 'UserManagementController@showLoginHistory']);
 });
