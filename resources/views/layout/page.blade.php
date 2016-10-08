@@ -42,7 +42,13 @@
 	FOOTER
 	--}}
 	@section('footer')
-
+		<div class="row column">
+			<footer>
+				<div class="callout text-center">
+					Footer placeholder
+				</div>
+			</footer>
+		</div>
 	@show
 
 @endsection {{-- end body --}}
