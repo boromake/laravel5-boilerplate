@@ -21,7 +21,7 @@ use \App\Enums\UserAccountTypes;
 
 Route::get('/', ['as' => 'homepage', function () {
 	Alert::success('Sweet Alert is set up!', 'Success!')->persistent("Close");
-\Log::debug('homepage visited!');
+
 	return view('homepage');
 }]);
 

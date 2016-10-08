@@ -50,7 +50,10 @@ class RegisterController extends Controller
 	{
 		$user_validation_rules = with(new User())->getRules();
 
-		return Validator::make($data, array_merge($user_validation_rules, [
+		// cherry-pick the rules we care about
+		$applicable_rules = array_only($user_validation_rules, ['email', 'password']);
+
+		return Validator::make($data, array_merge($applicable_rules, [
 			'password_confirmation' => 'required|same:password'
 		]));
 	}

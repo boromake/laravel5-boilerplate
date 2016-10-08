@@ -33,8 +33,10 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 	];
 
 	protected $rules = [
+		'uuid' => 'required|uuid',
 		'email' => 'required|max:255|email|unique:users',
 		'password' => 'required|min:6|max:255',
+		'account_type' => 'required',
 	];
 
 	protected $validationMessages = [
