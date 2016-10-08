@@ -16,11 +16,12 @@
 
 @section('nav')
 	<div class="row column">
+		@if(auth()->check()) Welcome, @icon(user) <strong>{{auth()->user()->email}}</strong>!@endif
 		<nav>
 			<ul class="menu">
+				<li><a href="{{route('homepage')}}">@icon(home) Home</a></li>
 				@if(auth()->check())
 					<li>
-						Welcome, @icon(user) <strong>{{auth()->user()->email}}</strong>!
 						<a href="{{route('account::logout')}}">@icon(sign-out) Log-Out</a>
 					</li>
 				@else

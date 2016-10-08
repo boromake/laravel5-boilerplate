@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Ramsey\Uuid\Uuid;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,21 @@ class AppServiceProvider extends ServiceProvider
 			$icon_name = trim($icon_name, '()');
 
 			return "<?php echo \"<i class=\\\"fa fa-$icon_name\\\" aria-hidden=\\\"true\\\"></i>\" ?>";
+		});
+
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Custom Validation Rules
+		|--------------------------------------------------------------------------
+		*/
+
+		//uuid
+		//The field under validation must be a valid uuid
+		\Validator::extend('uuid', function($attribute, $value, $parameters, $validator)
+		{
+			return Uuid::isValid($value);
 		});
 	}
 
