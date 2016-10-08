@@ -8,11 +8,16 @@
 @section('content')
 
 	<div class="row column">
-		@icon(thumbs-o-up la-lg) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-		magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>
+		Check out the wiki: <a href="https://github.com/boromake/laravel-5-boilerplate/wiki" target="_blank">https://github.com/boromake/laravel-5-boilerplate/wiki</a>
+		</p>
+		<p>
+		Font Awesome test: @icon(thumbs-o-up la-lg)
+		</p>
+		<p>
+		Image resizer and file system test. Do you see the thumbnail below?
+		</p>
+		<img src="{{asset('storage/' . \App\Classes\ImageResizer::fit('test', 'http://lorempixel.com/400/200/', 200, 0))}}" />
 	</div>
-
 @endsection
 

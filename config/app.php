@@ -120,6 +120,21 @@ $app_config = [
 
 	/*
 	|--------------------------------------------------------------------------
+	| Base folders
+	|--------------------------------------------------------------------------
+	| Various folders used to hold uploaded files (mostly images)
+	| These shouldn't be changed without rigorous testing (code and server
+	| changes are likely required)
+	*/
+	'folders' => [
+		'uploads' => [
+			'base' => 'uploads',
+		],
+		'base_image_cache' => 'deletable_image_cache', //don't change b/c of necessary symlinks
+	],
+
+	/*
+	|--------------------------------------------------------------------------
 	| Encryption Key
 	|--------------------------------------------------------------------------
 	|
