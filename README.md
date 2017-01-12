@@ -29,4 +29,4 @@ A boilerplate for Laravel 5.3 applications.
 ```
 
 ## Getting Set Up
-  *  Follow the [set up instructions](https://github.com/boromake/laravel-5-boilerplate/wiki/Getting-Set-Up)
+  *  Follow the [set up instructions](https://github.com/boromake/laravel5-boilerplate/wiki/Getting-Set-Up)
